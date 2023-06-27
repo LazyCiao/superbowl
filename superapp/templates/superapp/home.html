@@ -95,7 +95,7 @@
                     <div class="game-details">
                         <p>
                             <!-- Display game details -->
-                            <span>{{ game.home_team }} vs {{ game.away_team }}</span><br>
+                            <strong>{{ game.home_team }} vs {{ game.away_team }}</strong><br>
                             <span>Date: {{ game.datetime|date:"d.m.Y" }}</span><br>
                             <span>Final Score: {{ game.score }}</span><br>
                             <span>{{ game.commentary }}</span>
@@ -117,7 +117,7 @@
                     {% for game in current_games %}
                     <p>
                         <!-- Display current game details -->
-                        <span>{{ game.home_team }} vs {{ game.away_team }}</span><br>
+                        <strong>{{ game.home_team }} vs {{ game.away_team }}</strong><br>
                         <span>Odds: {{ game.home_team_odds }} vs {{ game.away_team_odds }}</span><br>
                         <span>Starting Time: {{ game.datetime|time:"g:i A" }}</span><br>
                         <span>End Time: {{ game.datetime_end|time:"g:i A" }}</span><br>
@@ -140,7 +140,7 @@
                     <div class="game-details">
                         <p>
                             <!-- Display upcoming game details -->
-                            <span>{{ game.home_team }} vs {{ game.away_team }}</span><br>
+                            <strong>{{ game.home_team }} vs {{ game.away_team }}</strong><br>
                             <span>Date: {{ game.datetime|date:"d.m.Y" }}</span><br>
                             <span>Time: {{ game.datetime|date:"g:i A" }}</span>
                             <div>
@@ -149,7 +149,7 @@
                                 <a href={% url 'login' %} class="btn-game btn-white">Place Bet</a>
                                 {% else %}
                                 <!-- Place Bet button (if user is authenticated) -->
-                                <a href="{% url 'bets' %}#bets" class="btn-game btn-white">Place Bet</a>
+                                <a href="{% url 'bets' %}" class="btn-game btn-white" name="place_bet">Place Bet</a>
                                 {% endif %}
                                 <!-- View Players button -->
                                 <a href="/roster?home_team={{ game.home_team }}&away_team={{ game.away_team }}" class="btn-game btn-white">View Players</a>

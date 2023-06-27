@@ -100,7 +100,4 @@ def bets(request):
         'user_bets': user_bets,
     }
 
-    # Default tab is 'current-games'
-    active_tab = request.GET.get('tab', 'current-games')
-
     return render(request, 'superapp/bets.html', template_context)

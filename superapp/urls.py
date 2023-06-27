@@ -3,7 +3,6 @@ from . import views
 from django.conf import settings
 
 
-
 urlpatterns = [
     path('', views.home, name='home'),
     path('roster/', views.roster, name='roster'),

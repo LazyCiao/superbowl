@@ -120,19 +120,19 @@
             <!-- Navigation tabs -->
             <ul class="nav nav-tabs justify-content-center mt-4">
                 <li class="nav-item">
-                    <a class="nav-link active" id="current-tab" data-toggle="tab" href="#current-games">Current Games</a>
+                    <a class="nav-link" id="current-tab" data-toggle="tab" href="#current-games">Current Games</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="bets-tab" data-toggle="tab" href="#bets">Bets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="upcoming-tab" data-toggle="tab" href="#upcoming-games">Upcoming Games</a>
+                    <a class="nav-link active" id="upcoming-tab" data-toggle="tab" href="#upcoming-games">Upcoming Games</a>
                 </li>
             </ul>
             
             <div class="tab-content mt-4">
                 <!-- Current Games tab -->
-                <div class="tab-pane fade show active" id="current-games">
+                <div class="tab-pane fade" id="current-games">
                     {% if current_games %}
                         {% for game in current_games %}
                             <p>
@@ -182,7 +182,7 @@
                 </div>
 
                 <!-- Upcoming Games tab -->
-                <div class="tab-pane fade" id="upcoming-games">
+                <div class="tab-pane show active" id="upcoming-games">
                     {% for game in upcoming_games %}
                         <div class="game-details">
                             <p>

@@ -87,7 +87,7 @@
 <body>
     <!-- Navigation bar -->
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-light">
-        <a class="navbar-brand" href={% url 'home' %}><b>Football Bets</b></a>
+        <a class="navbar-brand" href="{% url 'home' %}"><b>Football Bets</b></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -96,29 +96,37 @@
             <ul class="navbar-nav ml-auto justify-content-center">
                 <!-- Navigation links -->
                 <li class="nav-item active">
-                    <a class="nav-link nav-transition" href={% url 'home' %}><b>Home</b></a>
+                    <a class="nav-link nav-transition" href="{% url 'home' %}"><b>Home</b></a>
                 </li>
                 {% if user.is_authenticated %}
-                <li class="nav-item active">
-                    <a class="nav-link nav-transition" href={% url 'profile' %}><b>Profile</b></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link nav-transition" href={% url 'bets' %}><b>Bets</b></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link nav-transition" href={% url 'logout' %}><b>Logout</b></a>
-                </li>
+                    {% if user.is_superuser or user.is_staff %}
+                        <li class="nav-item active">
+                            <a class="nav-link nav-transition" href="{% url 'bureau:match' %}"><b>Match</b></a>
+                        </li>
+                    {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link nav-transition" href="{% url 'bets' %}"><b>Bets</b></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link nav-transition" href="{% url 'profile' %}"><b>Profile</b></a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item active">
+                        <a class="nav-link nav-transition" href="{% url 'logout' %}"><b>Logout</b></a>
+                    </li>
                 {% else %}
-                <li class="nav-item active">
-                    <a class="nav-link nav-transition" href={% url 'login' %}><b>Login</b></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link nav-transition" href={% url 'register' %}><b>Sign Up</b></a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link nav-transition" href="{% url 'login' %}"><b>Login</b></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link nav-transition" href="{% url 'register' %}"><b>Sign Up</b></a>
+                    </li>
                 {% endif %}
             </ul>
         </div>
     </nav>
+    
+    
     
     <!-- Content container -->
     <div class="container">
