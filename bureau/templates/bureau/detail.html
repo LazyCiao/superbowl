@@ -71,8 +71,8 @@
                     Score: {{ game.score }}<br>
                     Commentary: {{ game.commentary }}<br>
                     Weather: {{ game.weather }}<br>
-                    Home Team Odds: {{ game.home_team_odds }}<br>
-                    Away Team Odds: {{ game.away_team_odds }}
+                    {{ game.home_team }} Odds: {{ game.home_team_odds }}<br>
+                    {{ game.away_team }} Odds: {{ game.away_team_odds }}
                 </p>
                 <a href="/roster?home_team={{ game.home_team }}&away_team={{ game.away_team }}" class="btn-game btn-white">View Players</a>
             </div>

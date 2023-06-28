@@ -1,8 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required, user_passes_test
+from django.contrib.admin.views.decorators import staff_member_required
 from django.utils import timezone
 from games.models import Game, Team
+from django.contrib import messages
 
 
+def is_staff_or_superuser(user):
+    return user.is_staff or user.is_superuser
+
+
+@login_required
+@user_passes_test(is_staff_or_superuser)
 def match(request):
     # Retrieve current and upcoming games
     current_games = Game.objects.filter(datetime__lte=timezone.now(), datetime_end__gt=timezone.now())
@@ -15,7 +24,8 @@ def match(request):
 
     return render(request, 'bureau/match.html', context)
 
-
+@login_required
+@user_passes_test(is_staff_or_superuser)
 def detail(request, game_id):
     game = get_object_or_404(Game, id=game_id)
     context = {
@@ -37,3 +47,20 @@ def roster(request):
     }
 
     return render(request, 'bureau/roster.html', context)
+
+
+def terminate_match(request, game_id):
+    game = get_object_or_404(Game, id=game_id)
+    
+    # Perform the necessary actions to terminate the match
+    # For example, update the end time of the game
+    
+    game.datetime_end = timezone.now()
+    game.save()
+    success_message = 'Game has been terminated.'
+    messages.success(request, success_message)
+    # Redirect back to the match URL
+    return redirect('bureau:match')
+
+
+
