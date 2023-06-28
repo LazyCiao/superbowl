@@ -101,6 +101,7 @@
                             <div>
                                 <!-- View Players button -->
                                 <a href="{% url 'bureau:detail' game.id %}" class="btn-game btn-white">Game Details</a>
+                                <a href="{% url 'bureau:terminate_match' game.id %}" class="btn-game btn-red">Terminate Match</a>
                             </div>
                             <hr class="line">
                         {% endfor %}
