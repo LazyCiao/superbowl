@@ -67,22 +67,30 @@ Contributing:
 
 Contributions to the Bureau Web Application are welcome! If you have any bug fixes, enhancements, or new features to propose, please follow these steps:
 Fork the repository.
-Create a new branch for your feature: git checkout -b feature-name
-Make the necessary changes and commit them.
-Push your changes to your forked repository: git push origin feature-name
-Open a pull request describing your changes.
-Admin Access:
 
+Create a new branch for your feature: git checkout -b feature-name
+
+Make the necessary changes and commit them.
+
+Push your changes to your forked repository: git push origin feature-name
+
+Open a pull request describing your changes.
+
+Admin Access:
 To access the administrative features of the Bureau Web Application, you can use the existing superuser account. The credentials for the superuser account are as follows:
+
 superuser:
 Username: ciao
 Password: test3275
+
 staff/admin:
 Username: admin
 Password: test3275
+
 base user:
 Username: testuser
 Password: test3275
+
 Use these credentials to log in to the admin interface at http://localhost:8000/admin and manage the application's data.
 Please note that the existing superuser account already has administrative privileges, and you don't need to create a new superuser account unless necessary.
 
