@@ -80,21 +80,15 @@ Admin Access:
 To access the administrative features of the Bureau Web Application, you can use the existing superuser account. The credentials for the superuser account are as follows:
 
 superuser:
-
 Username: ciao
-
 Password: test3275
 
 staff/admin:
-
 Username: admin
-
 Password: test3275
 
 base user:
-
 Username: testuser
-
 Password: test3275
 
 Use these credentials to log in to the admin interface at http://localhost:8000/admin and manage the application's data.
