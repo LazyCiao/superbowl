@@ -1,11 +1,12 @@
 Bureau Web Application
-The Bureau Web Application is a Django-based platform that allows users to view and manage sports matches, place bets, and track their winnings or losses. It provides features for managing ongoing and upcoming games, as well as the ability for admins to manually terminate matches.
+This Application is a Django-based platform that allows users to view and manage sports matches, place bets, and track their winnings or losses. It provides features for managing ongoing and upcoming games, as well as the ability for admins to manually terminate matches.
 
 Features
 View current and upcoming sports matches
 Place bets on matches
 Track winnings and losses
 Manual termination of ongoing matches by admins
+
 Installation
 To run the Bureau Web Application locally, follow these steps:
 
