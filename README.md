@@ -1,5 +1,4 @@
 SuperBowl Web App
-SuperBowl Logo
 
 Welcome to SuperBowl, a Django web app that allows users to view and bet on American football games! SuperBowl provides real-time information on past, current, and upcoming games, allowing users to place bets and view their betting history. This README will guide you through the installation process and explain the features and functionalities of the application.
 
