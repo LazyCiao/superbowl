@@ -21,12 +21,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-*8web!5*1yb_7*=253(nzxpwq49qoc%df9n^u^!snldin69r3x'
+SECRET_KEY = os.environ.get('superbowl_secret_key', 'default_secret_key_value_if_not_set')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['superbowl-7b5f0e8a9fe6.herokuapp.com']
 
 
 # Application definition
@@ -124,11 +124,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# The URL to use when referring to static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+
+# The absolute filesystem path to the directory where collected static files will be stored.
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Additional locations of static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'superapp', 'static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -140,10 +148,19 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'superballdjangoapp@gmail.com' 
-EMAIL_HOST_PASSWORD = 'sirzgkgulqsfjsrq'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
+# Media files (User uploaded files)
+# https://docs.djangoproject.com/en/4.2/topics/files/
+
+# The URL to use when referring to user-uploaded files (media files).
 MEDIA_URL = '/media/'
+
+# The absolute filesystem path to the directory where user-uploaded files will be stored.
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Whitenoise configuration for serving static files on Heroku.
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
