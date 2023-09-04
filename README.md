@@ -1,126 +1,78 @@
-SuperBowl Web App
+# Project Overview
 
-Welcome to SuperBowl, a Django web app that allows users to view and bet on American football games! SuperBowl provides real-time information on past, current, and upcoming games, allowing users to place bets and view their betting history. This README will guide you through the installation process and explain the features and functionalities of the application.
+This Django-based sports betting platform allows users to place bets on sports games, manage user accounts, and view game-related information. Staff or superusers can manage games and make updates as needed.
 
-Table of Contents
-Getting Started
+# Installation
 
-Prerequisites
-Installation
-Running the App
-Usage
+To run this project locally, follow these steps:
 
-Home
-Roster
-Bets
-User Registration and Activation
-Bureau Access
-API Endpoints
-Database Models
+1. Clone the repository to your local machine:
+  
+  ``git clone https://github.com/your-username/your-repo.git``
 
-Team
-Player
-Game
-Bet
-Contributing
+2. Create a virtual environment and activate it:
 
-License
+  ``python -m venv venv``
+  source venv/bin/activate # On Windows, use venv\Scripts\activate
 
-Getting Started
-Prerequisites
-Before running SuperBowl, make sure you have the following installed on your system:
+3. Install the required dependencies:
+  
+  ``pip install -r requirements.txt``
 
-Python (>=3.7)
-Django (>=3.1)
-pip (Python package manager)
-Installation
-Clone this repository to your local machine using:
+4. Configure your database settings in `settings.py`.
 
-bash
-Copy code
-git clone https://github.com/your-username/superbowl.git
-cd superbowl
-Install the required Python packages using:
+5. Apply database migrations:
 
-Copy code
-pip install -r requirements.txt
-Running the App
-Start the Django development server using the following command:
+  ``python manage.py migrate``
 
-Copy code
-python manage.py runserver
-Open your web browser and go to http://127.0.0.1:8000/ to access the SuperBowl app.
+6. Start the development server:
 
-Usage
-Home
-The home page displays three sections of American football games:
+  ``python manage.py runserver``
 
-Past Games: Shows a list of recently completed games.
-Current Games: Displays games that are currently in progress.
-Upcoming Games: Lists games that are yet to start.
-Roster
-The roster page allows users to view team rosters for specific games. Select a home team and an away team from the dropdown lists to see their respective rosters.
+7. Access the application in your web browser at `http://localhost:8000/`.
 
-Bets
-To access the bets page, users must first register and log in. Once logged in, users can view and place bets on upcoming games. Users can also edit or cancel their existing bets. The bets page shows three sections:
+# Usage
 
-Past Games: Displays past games for which users have already placed bets.
-Current Games: Shows current games for which users can still place bets.
-Upcoming Games: Lists upcoming games available for betting.
-User Registration and Activation
-To register as a user, click on the "Register" link at the top-right corner of the page. Fill in the required information, and an activation email will be sent to your registered email address. Click the activation link to activate your account and start placing bets.
+1. **Registration**:
+- Visit the registration page and fill out the registration form.
+- An activation link will be sent to your email for account confirmation.
 
-Bureau Access
-SuperBowl has a special feature for staff members and superusers. The "Bureau" section is accessible only to users with staff or superuser privileges. Bureau access allows staff members to manage games and terminate matches. Only staff members can view the "Match" and "Detail" pages.
+2. **Login**:
+- After confirming your account, log in with your credentials.
 
-API Endpoints
-SuperBowl provides API endpoints to access information about teams, players, games, and bets. These endpoints allow external applications to access the data provided by the SuperBowl app.
+3. **Betting**:
+- View upcoming games on the home page.
+- Place bets on your chosen team with a specified bet amount.
+- Manage your bets on the "Bets" page.
 
-/api/teams/: Provides a list of all teams and their details.
-/api/players/: Provides a list of all players and their details.
-/api/games/: Provides a list of all games and their details.
-/api/bets/: Provides a list of all bets and their details.
-Database Models
-Team
-The Team model represents an American football team. It has the following fields:
+4. **Profile**:
+- View your profile to see your betting history and current bets.
 
-name: The name of the team.
-image: An optional field for the team's image/logo.
-Player
-The Player model represents a football player. It has the following fields:
+# Configuration
 
-first_name: The player's first name.
-last_name: The player's last name.
-team: A foreign key to the associated team.
-age: The player's age.
-player_number: The player's jersey number.
-state: The state associated with the player.
-Game
-The Game model represents an American football game. It has the following fields:
+- Email settings can be configured in `settings.py` to enable account activation emails.
+- Ensure that your email service provider settings are correctly configured.
 
-home_team: A foreign key to the home team.
-away_team: A foreign key to the away team.
-score: The final score of the game (when available).
-commentary: Commentary about the game (when available).
-weather: The weather conditions during the game (when available).
-home_team_odds: The odds for the home team to win.
-away_team_odds: The odds for the away team to win.
-duration: The duration of the game.
-datetime: The date and time of the game's start.
-datetime_end: The date and time of the game's end.
-Bet
-The Bet model represents a user's bet on a football game. It has the following fields:
+# API Endpoints
 
-user: A foreign key to the user who placed the bet.
-game: A foreign key to the game on which the user placed the bet.
-team: A foreign key to the team the user bet on (optional for future use).
-bet_amount: The amount the user bet on the game.
-result: The result of the bet (True for win, False for loss, None for pending).
-Contributing
-We welcome contributions to the SuperBowl project! To contribute, follow these steps:
+The application provides the following API endpoints for external access:
 
-Fork the repository and create a new branch for your feature or bug fix.
-Make your changes and test them thoroughly.
-Submit a pull request with a detailed description of your changes.
-License
-SuperBowl is open-source software licensed under the MIT License. Feel free to use, modify, and distribute the code as per the terms of the license.
+- `/teams/`: Get a list of all sports teams.
+- `/players/`: Get a list of all players.
+- `/games/`: Get a list of all games.
+- `/api/bets/`: API for managing user bets.
+
+# Contributing
+
+Contributions to this project are welcome. To contribute:
+
+1. Fork the repository and clone it to your local machine.
+2. Create a new branch for your feature or bug fix.
+3. Implement your changes.
+4. Test your changes thoroughly.
+5. Commit your changes and push them to your forked repository.
+6. Open a pull request to the main repository.
+
+# License
+
+This project is licensed under the [Your License Name](LICENSE) - (e.g., MIT) License. See the [LICENSE](LICENSE) file for details.
